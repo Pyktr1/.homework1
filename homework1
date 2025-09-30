@@ -1,14 +1,33 @@
 from datetime import datetime
 
+#Читати з верху до низу
+
+# Імпортуєм модуль datetime і берем клас datetime
+
+# Створюєм функцію get_days_from_today
 def get_days_from_today(date):
-    
-    input_date = datetime.strptime(date, '%Y-%m-%d').date()
+    try:
+        # Перетворіть рядок дати у форматі 'РРРР-ММ-ДД' у об'єкт datetime.
 
-    todays_date = datetime.today().date()
+        input_date = datetime.strptime(date, '%Y-%m-%d').date()
+        
+        # todays_date дає сьогоднішню дату і бере саму дату за допомогою .date() без часу і місяця 
 
-    delta = input_date - todays_date
+        todays_date = datetime.today().date()
+        
+        # Розрахунок різниці
 
-    return delta.days
+        delta = input_date - todays_date
+        
+        return delta.days
+    except ValueError:
+
+        # Обробка неправильного формату дати
+
+        return None
 
 
 print(get_days_from_today("2020-10-09"))
+
+
+#Викликаєм код 
